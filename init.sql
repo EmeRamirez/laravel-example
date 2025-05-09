@@ -2,6 +2,35 @@
 CREATE DATABASE IF NOT EXISTS ciisa_backend;
 USE ciisa_backend;
 
+-- Tablas esenciales de Laravel
+CREATE TABLE IF NOT EXISTS sessions (
+    id VARCHAR(255) PRIMARY KEY,
+    user_id BIGINT NULL,
+    ip_address VARCHAR(45) NULL,
+    user_agent TEXT NULL,
+    payload TEXT NOT NULL,
+    last_activity INT NOT NULL,
+    INDEX `sessions_user_id_index` (`user_id`),
+    INDEX `sessions_last_activity_index` (`last_activity`)
+);
+
+CREATE TABLE IF NOT EXISTS users (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255),
+    email VARCHAR(255) UNIQUE,
+    email_verified_at TIMESTAMP NULL,
+    password VARCHAR(255),
+    remember_token VARCHAR(100),
+    created_at TIMESTAMP NULL,
+    updated_at TIMESTAMP NULL
+);
+
+CREATE TABLE IF NOT EXISTS password_resets (
+    email VARCHAR(255) PRIMARY KEY,
+    token VARCHAR(255),
+    created_at TIMESTAMP NULL
+);
+
 -- mantenimiento_info
 CREATE TABLE mantenimiento_info (
     id INT PRIMARY KEY AUTO_INCREMENT,
