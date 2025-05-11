@@ -95,6 +95,34 @@ docker-compose exec app php artisan optimize:clear
 # Generar clave de aplicación (solo si no es automático)
 docker-compose exec app php artisan key:generate
 
-# Ejecutar tests unitarios
+### 🧪 Tests unitarios
+
+Este proyecto utiliza **PHPUnit** junto con **Laravel Test Suite** para pruebas automatizadas. Las pruebas se ubican en `tests/Feature` y cubren los siguientes recursos:
+
+- `Equipo`
+- `Historia`
+- `Imagen`
+- `InfoContacto`
+- `MantenimientoInfo`
+- `PreguntaFrecuente`
+
+#### ✅ Ejecutar los tests
+
+Con Docker:
+
+```bash
 docker-compose exec app php artisan test
-```
+
+### Crear un nuevo test
+
+Para generar un archivo de prueba en la carpeta Feature:
+
+```bash
+php artisan make:test NombreDelModeloTest --feature
+
+### Crear un factory
+
+Si tu modelo aún no tiene un factory, necesario para Model::factory(), puedes generarlo con:
+
+```bash
+php artisan make:factory NombreDelModeloFactory --model=NombreDelModelo

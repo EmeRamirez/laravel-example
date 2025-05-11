@@ -22,9 +22,3 @@ Route::apiResource('imagenes', ImagenController::class);
 Route::apiResource('info-contacto', InfoContactoController::class);
 Route::apiResource('mantenimiento-info', MantenimientoInfoController::class);
 Route::apiResource('preguntas-frecuentes', PreguntaFrecuenteController::class);
-
-Route::get('/wea', function () {
-    return response()->json([
-        'message' => 'Hello, World!'
-    ]);
-});
